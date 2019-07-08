@@ -1,0 +1,22 @@
+CREATE TABLE "Chats" (
+	"IdChat"	INT NOT NULL,
+	"Name"	TEXT,
+	PRIMARY KEY("IdChat")
+);
+
+CREATE TABLE "Messages" (
+	"IdMessage"	integer PRIMARY KEY AUTOINCREMENT,
+	"Text"	TEXT,
+	"IdChat"	INT,
+	"IdUser"	INT,
+	FOREIGN KEY("IdChat") REFERENCES "Chats",
+	FOREIGN KEY("IdUser") REFERENCES "Users"
+);
+
+CREATE TABLE "Users" (
+	"IdUser"	INT NOT NULL,
+	"LastName"	TEXT,
+	"FirstName"	TEXT,
+	"NickName"	TEXT,
+	PRIMARY KEY("IdUser")
+);

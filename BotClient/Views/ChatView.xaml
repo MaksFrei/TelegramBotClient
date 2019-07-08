@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="BotClient.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:BotClient.ViewModel"
+             xmlns:local="clr-namespace:BotClient"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"             
+             d:DataContext="{d:DesignInstance viewmodel:MainViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="137*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding ActiveChat.MessagesCollection}"
+                  Margin="0,34,0,0"
+                  SelectedItem="{Binding LastMessage}"
+                  SelectionChanged="ListView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding User.FirstName}"
+                                       FontStyle="Italic"
+                                       FontWeight="Bold"
+                                       Margin="5"/>
+                            <TextBlock Text="{Binding User.LastName}"
+                                       FontStyle="Italic"
+                                       FontWeight="Bold"
+                                       Margin="5"/>
+                            <TextBlock Text="{Binding User.NickName}"
+                                       FontStyle="Italic"
+                                       FontWeight="Bold"
+                                       Margin="5"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Text}"
+                                Margin="5"/>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBox Margin="0,0,108,0"
+                 Text="{Binding Text}"
+                 BorderThickness="0,5,0,0"
+                 VerticalAlignment="Bottom"
+                 Tag="Введите сообщение" Grid.Row="1" Height="39"/>
+        <Button Style="{StaticResource ReverseButton}"
+                Command="{Binding Send}"
+                Content="Отправить"
+                Height="37"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Width="106"
+                Grid.Row="1" Margin="0,0,2,2"/>
+        <TextBlock Text="{Binding ActiveChat.Name}"
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top" 
+                   Tag="Выберите чат" Height="23" Margin="0,0,42,0" TextAlignment="Center"/>
+        <Button Content="Х"
+                Style="{StaticResource ReverseButton}"
+                Command="{Binding CloseView}" 
+                Margin="0,-4,2,0"
+                VerticalAlignment="Top" Height="34" HorizontalAlignment="Right" Width="35"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <Style TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="BorderThickness" Value="2,2,2,2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightBaseBrush}"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+
+
+
+</ResourceDictionary>
