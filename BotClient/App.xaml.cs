@@ -14,7 +14,7 @@ namespace BotClient
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var bot = new Bot();
+            var bot = Bot.GetBot();
             var mainWindow = new MainWindow();
             var dialogManager = new DialogManager(mainWindow);
 

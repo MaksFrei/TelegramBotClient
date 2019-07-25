@@ -14,6 +14,7 @@ namespace TelegramBot.Models
     public class Bot : IMessaneger
     {
         #region Properties
+        private static Bot Instance { get; set; }
         private static WebProxy proxy;
         private static List<WebProxy> proxyList = new List<WebProxy>();
         private static List<Command> commandsList = new List<Command>();
@@ -34,9 +35,16 @@ namespace TelegramBot.Models
             GetProxyList();
             proxy = proxyList[0];
         }
-        public Bot()
+        private Bot()
         {
             InitializeAsync(proxy);
+        }
+
+        public static Bot GetBot()
+        {
+            if (Instance == null)
+                Instance = new Bot();
+            return Instance;
         }
         #endregion
 
